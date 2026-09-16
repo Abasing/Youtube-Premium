@@ -1,0 +1,202 @@
+/* YTLoop Controls Container */
+.ytloop-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-right: 8px;
+}
+
+/* Base button styles */
+.ytloop-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: opacity 0.2s, color 0.2s, background-color 0.2s;
+  border-radius: 4px;
+}
+
+.ytloop-btn:hover {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.ytloop-btn.active {
+  color: #ff0000;
+  opacity: 1;
+}
+
+.ytloop-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Point A/B buttons */
+.ytloop-point-btn {
+  width: 28px;
+  height: 28px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.ytloop-point-btn.set {
+  background-color: rgba(255, 0, 0, 0.3);
+  color: #fff;
+}
+
+#ytloop-set-a.set {
+  background-color: rgba(76, 175, 80, 0.5);
+}
+
+#ytloop-set-b.set {
+  background-color: rgba(33, 150, 243, 0.5);
+}
+
+/* Reset button */
+.ytloop-reset-btn {
+  width: 28px;
+  height: 28px;
+}
+
+.ytloop-reset-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Time display */
+.ytloop-time-display {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 2px 6px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 3px;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.ytloop-time-display:empty {
+  display: none;
+}
+
+/* Timeline Markers */
+.ytloop-markers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 40;
+}
+
+.ytloop-marker {
+  position: absolute;
+  top: -20px;
+  transform: translateX(-50%);
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 5px;
+  border-radius: 3px;
+  display: none;
+  z-index: 41;
+}
+
+.ytloop-marker-a {
+  background-color: #4CAF50;
+  color: #fff;
+}
+
+.ytloop-marker-b {
+  background-color: #2196F3;
+  color: #fff;
+}
+
+/* Loop region highlight */
+.ytloop-region {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(255, 0, 0, 0.2);
+  border-left: 2px solid #4CAF50;
+  border-right: 2px solid #2196F3;
+  display: none;
+  pointer-events: none;
+  z-index: 39;
+}
+
+/* Show markers on hover */
+.ytp-progress-bar:hover .ytloop-marker {
+  display: block;
+}
+
+/* Notification */
+.ytloop-notification {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: 'YouTube Sans', 'Roboto', sans-serif;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.ytloop-notification.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Fullscreen adjustments */
+.ytp-fullscreen .ytloop-controls {
+  gap: 6px;
+}
+
+.ytp-fullscreen .ytloop-btn {
+  width: 44px;
+  height: 44px;
+}
+
+.ytp-fullscreen .ytloop-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.ytp-fullscreen .ytloop-point-btn {
+  width: 34px;
+  height: 34px;
+  font-size: 14px;
+}
+
+.ytp-fullscreen .ytloop-reset-btn {
+  width: 34px;
+  height: 34px;
+}
+
+.ytp-fullscreen .ytloop-time-display {
+  font-size: 13px;
+  padding: 4px 8px;
+}
+
+.ytp-fullscreen .ytloop-marker {
+  font-size: 12px;
+  padding: 3px 6px;
+  top: -24px;
+}

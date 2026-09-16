@@ -1,0 +1,41 @@
+/* like/dislike ratio bar (ported from Return YouTube Dislike styles) */
+#ryd-bar-container {
+  background: #737373;
+  background: color-mix(in srgb, var(--yt-spec-text-primary, #f1f1f1) 55%, var(--yt-spec-base-background, #0f0f0f) 45%);
+  border-radius: 2px;
+}
+
+#ryd-bar {
+  background: var(--yt-spec-text-primary);
+  border-radius: 2px;
+  transition: all 0.15s ease-in-out;
+}
+
+.ryd-tooltip {
+  display: block;
+  height: 2px;
+}
+
+.ryd-tooltip-new-design {
+  position: absolute;
+  bottom: -10px;
+  inset-inline-start: 0;
+}
+
+.ryd-tooltip-bar-container {
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  padding-top: 6px;
+  padding-bottom: 12px;
+  top: -6px;
+}
+
+/* required to make the ratio bar visible in the new design */
+ytd-menu-renderer.ytd-watch-metadata {
+  overflow-y: visible !important;
+}
+
+#top-level-buttons-computed {
+  position: relative !important;
+}

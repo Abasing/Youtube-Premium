@@ -1,0 +1,162 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Premium",
+  "version": "2.0.4",
+  "description": "Premium-style YouTube logo with YouTube ad blocking. Visual-only for the logo; does not alter your account or any Premium functionality.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "YouTube Premium",
+    "default_icon": {
+      "16": "images/icon-16.png",
+      "24": "images/icon-24.png",
+      "32": "images/icon-32.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "images/icon-16.png",
+    "32": "images/icon-32.png",
+    "48": "images/icon-48.png",
+    "128": "images/icon-128.png"
+  },
+  "permissions": [
+    "tabs",
+    "storage",
+    "unlimitedStorage",
+    "scripting",
+    "alarms",
+    "declarativeNetRequest",
+    "webNavigation",
+    "webRequest"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "*://*.youtube.com/*"
+      ],
+      "resources": [
+        "fonts/*.woff2"
+      ]
+    }
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "http://www.youtube.com/*"
+      ],
+      "js": [
+        "contentscript.js"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "http://www.youtube.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://music.youtube.com/*"
+      ],
+      "js": [
+        "antipause.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://music.youtube.com/*"
+      ],
+      "js": [
+        "pause-coordinator.js"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "http://www.youtube.com/*"
+      ],
+      "css": [
+        "yt-loop.css"
+      ],
+      "js": [
+        "yt-loop.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "http://www.youtube.com/*"
+      ],
+      "css": [
+        "yt-likes.css"
+      ],
+      "js": [
+        "ryd-lite.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "http://www.youtube.com/*"
+      ],
+      "css": [
+        "yt-tags.css"
+      ],
+      "js": [
+        "video-tags.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "http://www.youtube.com/*"
+      ],
+      "css": [
+        "yt-boost.css"
+      ],
+      "js": [
+        "volume-boost.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "http://www.youtube.com/*"
+      ],
+      "js": [
+        "premium-benefits.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://www.youtube.com/watch*",
+        "http://www.youtube.com/watch*"
+      ],
+      "js": [
+        "yt-download.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

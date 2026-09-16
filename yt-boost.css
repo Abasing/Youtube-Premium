@@ -1,0 +1,126 @@
+#movie_player.ypm-boost-on .ytp-chrome-controls,
+#movie_player.ypm-boost-on .ytp-left-controls {
+  min-width: 0;
+}
+
+#movie_player.ypm-boost-on .ytp-time-display {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+}
+
+#movie_player.ypm-boost-on .ytp-volume-area {
+  flex: 0 0 auto;
+  overflow: visible;
+}
+
+/* Never show YouTube's own rail/handle while boost is active. */
+#movie_player.ypm-boost-on .ytp-volume-panel {
+  position: relative;
+  overflow: visible;
+}
+
+#movie_player.ypm-boost-on .ytp-volume-slider {
+  background: transparent !important;
+  overflow: visible;
+}
+
+#movie_player.ypm-boost-on .ytp-volume-slider-handle {
+  visibility: hidden !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Width is set inline by volume-boost.js; these are just fallbacks. */
+#movie_player.ypm-boost-on .ytp-volume-area:hover .ytp-volume-panel,
+#movie_player.ypm-boost-on .ytp-volume-area:hover .ytp-volume-slider {
+  width: 175px;
+}
+
+/* ---- fixed rail overlay (painted by volume-boost.js) ---- */
+
+.ypm-boost-track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 4px;
+  transform: translateY(-50%);
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+}
+
+/* Fill is white normally, red past 100% (set inline). */
+.ypm-boost-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 2px;
+}
+
+/* Thin tick at the 100% mark. */
+.ypm-boost-marker {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+/* Own white knob, centered on the value. */
+.ypm-boost-handle {
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  margin-top: -6px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+}
+
+/* Percentage bubble floating above the handle tip; left set inline so it
+   rides along with the handle, centered via translateX(-50%). */
+.ypm-boost-readout {
+  position: absolute;
+  bottom: 10px;
+  padding: 3px 7px;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+  transform: translateX(-50%);
+  text-shadow: none;
+  z-index: 10;
+}
+
+.ypm-boost-readout::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid rgba(0, 0, 0, 0.8);
+  transform: translateX(-50%);
+}
+
+.ypm-boost-readout.ypm-boost-readout-boost {
+  background: #2b0006;
+  color: #ff4d5e;
+}
+
+.ypm-boost-readout.ypm-boost-readout-boost::after {
+  border-top-color: #2b0006;
+}
